@@ -14,5 +14,10 @@ app.get('/', function(req, res) {
     res.render('pages/index', {date: date, time: time});
 });
 
+// About page
+app.get('/about', function(req, res) {
+    res.render('pages/about');
+});
+
 app.listen(8080);
 console.log('Server is listening on port 8080');
