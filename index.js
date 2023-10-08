@@ -9,11 +9,9 @@ app.set('view engine', 'ejs');
 
 // index page
 app.get('/', function(req, res) {
-    while(true){
-        let date = dt.getMedDate();
-        let time = dt.getTime(true);
-        res.render('pages/index', {date: date, time: time});
-    }
+    let date = dt.getMedDate();
+    let time = dt.getTime(true);
+    res.render('pages/index', {date: date, time: time});
 });
 
 app.listen(8080);
