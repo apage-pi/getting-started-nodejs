@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var dt = require('./datetime.js');
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -8,14 +9,10 @@ app.set('view engine', 'ejs');
 
 // index page
 app.get('/', function(req, res) {
-    while(True){
-        let dt = new Date();
-        let day = dt.getUTCDate()
-        let month = dt.getUTCMonth()
-        let year = dt.getUTCFullYear()
-        
+    while(true){
+        let date = dt.getMedDate();
+        res.render('pages/index', {date: date});
     }
-    res.render('pages/index');
 });
 
 app.listen(8080);

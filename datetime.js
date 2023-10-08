@@ -1,4 +1,4 @@
-export function dateInfo() {
+function dateInfo() {
     let dt = new Date();
     let day = dt.getDate();
     let month = dt.getMonth();
@@ -8,7 +8,7 @@ export function dateInfo() {
     return dateInfo;
 }
 
-export function fullDateInfo() {
+function fullDateInfo() {
     let dt = new Date();
     let day = dt.getDate().toString();
     let iMonth = dt.getMonth();
@@ -86,7 +86,7 @@ export function fullDateInfo() {
     return dateInfo;
 }
 
-export function medDateInfo() {
+function medDateInfo() {
     let dt = new Date();
     let day = dt.getDate().toString();
     let iMonth = dt.getMonth();
@@ -165,7 +165,7 @@ export function medDateInfo() {
 }
 
 
-export function shortDateInfo() {
+module.exports.shortDateInfo = function shortDateInfo() {
     let date = dateInfo();
     let day = date[0].toString();
     let month = date[1].toString();
@@ -175,20 +175,20 @@ export function shortDateInfo() {
     return dateInfoStr;
 }
 
-export function getShortDate() {
+module.exports.getShortDate = function getShortDate() {
     let date = shortDateInfo();
     let shortDate = date[0] + "/" + date[1] + "/" + date[2];
     console.log(shortDate);
 }
 
-export function getFullDate(){
+module.exports.getFullDate = function getFullDate(){
     let date = fullDateInfo();
     let fullDate = date[3] + ", " + date[1] + " " + date[0] + ", " + date[2];
     return fullDate;
 }
 
-export function getMedDate(){
-    let date = fullDateInfo();
+module.exports.getMedDate = function getMedDate(){
+    let date = medDateInfo();
     let medDate = date[3] + ", " + date[1] + " " + date[0] + ", " + date[2];
     return medDate;
 }
