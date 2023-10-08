@@ -260,5 +260,3 @@ module.exports.getTime = function getTime(hr12, degree) {
 
     return time;
 }
-
-console.log(this.getTime());
