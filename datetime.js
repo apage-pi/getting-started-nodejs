@@ -172,11 +172,17 @@ function timeInfo() {
     let hr = dt.getHours();
     if (hr > 12) {
         var hr12 = hr - 12;
+        var ampm = "AM";
+    }
+    else if (hr == 0) {
+        var hr12 = 12;
+        var ampm = "AM";
     }
     else {
         var hr12 = hr;
+        var ampm = "AM";
     }
-    const timeInfo = [ms, sec, min, hr, hr12];
+    const timeInfo = [ms, sec, min, hr, hr12, ampm];
     return timeInfo;
 }
 
@@ -196,12 +202,18 @@ function timeInfoStr() {
     let hr = dt.getHours().toString();
     if (hr > 12) {
         var hr12t = hr - 12;
+        var ampm = "AM";
+    }
+    else if (hr == 0) {
+        var hr12t = 12;
+        var ampm = "AM";
     }
     else {
         var hr12t = hr;
+        var ampm = "AM";
     }
     let hr12 = hr12t.toString();
-    const tInfo = [ms, sec, min, hr, hr12];
+    const tInfo = [ms, sec, min, hr, hr12, ampm];
     return tInfo;
 }
 
@@ -237,13 +249,13 @@ module.exports.getTime = function getTime(hr12, degree) {
     let timeInfo = timeInfoStr();
     if (hr12 == true) {
         if (degree == "sec") {
-            var time = timeInfo[4] + ":" + timeInfo[2] + ":" + timeInfo[1];
+            var time = timeInfo[4] + ":" + timeInfo[2] + ":" + timeInfo[1] + " " + timeInfo[5];
         }
         else if (degree == "ms") {
-            var time = timeInfo[4] + ":" + timeInfo[2] + ":" + timeInfo[1] + ":" + timeInfo[0];
+            var time = timeInfo[4] + ":" + timeInfo[2] + ":" + timeInfo[1] + ":" + timeInfo[0] + " " + timeInfo[5];
         }
         else {
-            var time = timeInfo[4] + ":" + timeInfo[2];
+            var time = timeInfo[4] + ":" + timeInfo[2] + " " + timeInfo[5];
         }
     }
     else {
