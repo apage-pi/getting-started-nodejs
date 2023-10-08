@@ -11,7 +11,8 @@ app.set('view engine', 'ejs');
 app.get('/', function(req, res) {
     while(true){
         let date = dt.getMedDate();
-        res.render('pages/index', {date: date});
+        let time = dt.getTime(true);
+        res.render('pages/index', {date: date, time: time});
     }
 });
 

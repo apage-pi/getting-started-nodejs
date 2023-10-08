@@ -164,8 +164,48 @@ function medDateInfo() {
     return dateInfo;
 }
 
+function timeInfo() {
+    let dt = new Date();
+    let ms = dt.getMilliseconds();
+    let sec = dt.getSeconds();
+    let min = dt.getMinutes();
+    let hr = dt.getHours();
+    if (hr > 12) {
+        var hr12 = hr - 12;
+    }
+    else {
+        var hr12 = hr;
+    }
+    const timeInfo = [ms, sec, min, hr, hr12];
+    return timeInfo;
+}
 
-module.exports.shortDateInfo = function shortDateInfo() {
+function timeInfoStr() {
+    let dt = new Date();
+    let ms = dt.getMilliseconds().toString();
+    let sec = dt.getSeconds().toString();
+    let mint = dt.getMinutes();
+    let mint2 = mint.toString();
+    if (mint < 9) {
+        var min = "0" + mint2;
+    }
+    else {
+        var min = mint.toString();
+    }
+
+    let hr = dt.getHours().toString();
+    if (hr > 12) {
+        var hr12t = hr - 12;
+    }
+    else {
+        var hr12t = hr;
+    }
+    let hr12 = hr12t.toString();
+    const tInfo = [ms, sec, min, hr, hr12];
+    return tInfo;
+}
+
+function shortDateInfo() {
     let date = dateInfo();
     let day = date[0].toString();
     let month = date[1].toString();
@@ -192,3 +232,33 @@ module.exports.getMedDate = function getMedDate(){
     let medDate = date[3] + ", " + date[1] + " " + date[0] + ", " + date[2];
     return medDate;
 }
+
+module.exports.getTime = function getTime(hr12, degree) {
+    let timeInfo = timeInfoStr();
+    if (hr12 == true) {
+        if (degree == "sec") {
+            var time = timeInfo[4] + ":" + timeInfo[2] + ":" + timeInfo[1];
+        }
+        else if (degree == "ms") {
+            var time = timeInfo[4] + ":" + timeInfo[2] + ":" + timeInfo[1] + ":" + timeInfo[0];
+        }
+        else {
+            var time = timeInfo[4] + ":" + timeInfo[2];
+        }
+    }
+    else {
+        if (degree == "sec") {
+            var time = timeInfo[3] + ":" + timeInfo[2] + ":" + timeInfo[1];
+        }
+        else if (degree == "ms") {
+            var time = timeInfo[3] + ":" + timeInfo[2] + ":" + timeInfo[1] + ":" + timeInfo[0];
+        }
+        else {
+            var time = timeInfo[3] + ":" + timeInfo[2];
+        }
+    }
+
+    return time;
+}
+
+console.log(this.getTime());
