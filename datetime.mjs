@@ -86,7 +86,86 @@ export function fullDateInfo() {
     return dateInfo;
 }
 
-export function dateInfoStr() {
+export function medDateInfo() {
+    let dt = new Date();
+    let day = dt.getDate().toString();
+    let iMonth = dt.getMonth();
+    let year = dt.getFullYear().toString();
+    let iWeekday = dt.getDay();
+    let month = "";
+    let weekday = "";
+    switch (iMonth) {
+        case 0:
+            month = "Jan";
+            break;
+        case 1:
+            month = "Feb";
+            break;
+        case 2:
+            month = "Mar";
+            break;
+        case 3:
+            month = "Apr";
+            break;
+        case 4:
+            month = "May";
+            break;
+        case 5:
+            month = "Jun";
+            break;
+        case 6:
+            month = "Jul";
+            break;
+        case 7:
+            month = "Aug";
+            break;
+        case 8:
+            month = "Sep";
+            break;
+        case 9:
+            month = "Oct";
+            break;
+        case 10:
+            month = "Nov";
+            break;
+        case 11:
+            month = "Dec";
+            break;
+        default:
+            month = "undef";
+            break;
+    }
+    switch (iWeekday) {
+        case 0:
+            weekday = "Sun";
+            break;
+        case 1:
+            weekday = "Mon";
+            break;
+        case 2:
+            weekday = "Tue";
+            break;
+        case 3:
+            month = "Wed";
+            break;
+        case 4:
+            weekday = "Thu";
+            break;
+        case 5:
+            weekday = "Fri";
+            break;
+        case 6:
+            weekday = "Sat";
+            break;
+        default:
+            weekday= "undef";
+    }
+    const dateInfo = [day, month, year, weekday];
+    return dateInfo;
+}
+
+
+export function shortDateInfo() {
     let date = dateInfo();
     let day = date[0].toString();
     let month = date[1].toString();
@@ -96,8 +175,8 @@ export function dateInfoStr() {
     return dateInfoStr;
 }
 
-export function getDate() {
-    let date = dateInfoStr();
+export function getShortDate() {
+    let date = shortDateInfo();
     let shortDate = date[0] + "/" + date[1] + "/" + date[2];
     console.log(shortDate);
 }
@@ -106,4 +185,10 @@ export function getFullDate(){
     let date = fullDateInfo();
     let fullDate = date[3] + ", " + date[1] + " " + date[0] + ", " + date[2];
     return fullDate;
+}
+
+export function getMedDate(){
+    let date = fullDateInfo();
+    let medDate = date[3] + ", " + date[1] + " " + date[0] + ", " + date[2];
+    return medDate;
 }
