@@ -202,7 +202,7 @@ function timeInfoStr() {
     let hr = dt.getHours().toString();
     if (hr > 12) {
         var hr12t = hr - 12;
-        var ampm = "AM";
+        var ampm = "PM";
     }
     else if (hr == 0) {
         var hr12t = 12;
